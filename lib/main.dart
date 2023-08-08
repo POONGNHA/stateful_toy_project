@@ -12,14 +12,16 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  List<int> numbers = [];
+
+  void onClicked() {
+    setState(() {
+      numbers.add(numbers.length);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    int counter = 0;
-
-    void onClicked() {
-      counter += 1;
-    }
-
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.white,
@@ -31,10 +33,7 @@ class _AppState extends State<App> {
                 'Click Count',
                 style: TextStyle(fontSize: 15),
               ),
-              Text(
-                '$counter',
-                style: const TextStyle(fontSize: 15),
-              ),
+              for (var n in numbers) Text('$n'),
               IconButton(
                 onPressed: onClicked,
                 icon: const Icon(Icons.add_box_outlined),
